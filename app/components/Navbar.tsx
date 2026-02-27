@@ -2,85 +2,101 @@
 
 import { useState, useEffect } from "react";
 import { List, X } from "phosphor-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const links = ["Home", "About", "Projects", "Contact"];
+const links = [
+  { name: "Home", id: "home" },
+  { name: "About", id: "about" },
+  { name: "Projects", id: "projects" },
+  { name: "Contact", id: "contact" },
+];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 30);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleClick = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+    setOpen(false);
+  };
+
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-[#070816]/80 backdrop-blur-xl shadow-lg"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-        {/* Logo */}
-        <h1 className="text-lg font-semibold bg-gradient-to-r from-[#32C5EF] via-[#6496F3] to-[#9666F6] bg-clip-text text-transparent">
-          Dyego
-        </h1>
-
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-10 text-[13px] font-medium tracking-wide">
-          {links.map((link) => (
-            <li key={link} className="relative group cursor-pointer">
-              <span className="text-gray-400 group-hover:text-white transition duration-300">
-                {link}
-              </span>
-
-              <span
-                className="
-                  absolute left-1/2 -translate-x-1/2 bottom-[-6px]
-                  h-[2px] w-0
-                  bg-gradient-to-r from-[#32C5EF] via-[#6496F3] to-[#9666F6]
-                  rounded-full
-                  transition-all duration-300
-                  group-hover:w-5
-                "
-              ></span>
-            </li>
-          ))}
-        </ul>
-
-        {/* Mobile Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-white"
-        >
-          {isOpen ? <X size={26} /> : <List size={26} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden transition-all duration-500 overflow-hidden ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+    <>
+      <nav
+        className={`fixed w-full z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-[#050816]/90 backdrop-blur-md border-b border-white/10"
+            : "bg-transparent"
         }`}
       >
-        <ul className="flex flex-col items-center gap-6 py-8 bg-[#070816]/95 backdrop-blur-xl text-sm">
-          {links.map((link) => (
-            <li
-              key={link}
-              onClick={() => setIsOpen(false)}
-              className="text-gray-400 hover:text-white transition duration-300"
-            >
-              {link}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </nav>
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          {/* Logo */}
+          <span className="text-xl font-semibold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+            Dyego.dev
+          </span>
+
+          {/* Desktop */}
+          <div className="hidden md:flex gap-10 text-sm">
+            {links.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => handleClick(link.id)}
+                className="relative text-gray-300 hover:text-white transition group"
+              >
+                {link.name}
+
+                <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-gradient-to-r from-cyan-400 to-purple-500 transition-all duration-300 group-hover:w-full" />
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile Button */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="md:hidden text-white"
+          >
+            {open ? <X size={28} /> : <List size={28} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* MOBILE FULLSCREEN MENU */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-[#050816] z-40 flex flex-col items-center justify-center gap-10 text-xl"
+          >
+            {links.map((link) => (
+              <motion.button
+                key={link.id}
+                onClick={() => handleClick(link.id)}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="text-gray-300 hover:text-white transition"
+              >
+                {link.name}
+              </motion.button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
