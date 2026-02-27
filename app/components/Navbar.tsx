@@ -1,71 +1,86 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { List, X } from "phosphor-react";
+
+const links = ["Home", "About", "Projects", "Contact"];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const links = ["About", "Skills", "Projects", "Certificates", "Contact"];
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <>
-      <nav className="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-          {/* Logo */}
-          <h1 className="text-lg font-bold tracking-wide text-white">
-            Dyego.dev
-          </h1>
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-[#070816]/80 backdrop-blur-xl shadow-lg"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+        {/* Logo */}
+        <h1 className="text-lg font-semibold bg-gradient-to-r from-[#32C5EF] via-[#6496F3] to-[#9666F6] bg-clip-text text-transparent">
+          Dyego
+        </h1>
 
-          {/* Desktop Menu */}
-          <ul className="hidden md:flex gap-8 text-sm text-gray-300">
-            {links.map((link) => (
-              <li
-                key={link}
-                className="relative group cursor-pointer text-gray-400 transition duration-300"
-              >
-                <span className="group-hover:text-white transition duration-300">
-                  {link}
-                </span>
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex items-center gap-10 text-[13px] font-medium tracking-wide">
+          {links.map((link) => (
+            <li key={link} className="relative group cursor-pointer">
+              <span className="text-gray-400 group-hover:text-white transition duration-300">
+                {link}
+              </span>
 
-                <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-gradient-to-r from-[#32C5EF] via-[#6496F3] to-[#9666F6] transition-all duration-500 group-hover:w-full rounded-full"></span>
-              </li>
-            ))}
-          </ul>
+              <span
+                className="
+                  absolute left-1/2 -translate-x-1/2 bottom-[-6px]
+                  h-[2px] w-0
+                  bg-gradient-to-r from-[#32C5EF] via-[#6496F3] to-[#9666F6]
+                  rounded-full
+                  transition-all duration-300
+                  group-hover:w-5
+                "
+              ></span>
+            </li>
+          ))}
+        </ul>
 
-          {/* Mobile Button */}
-          <button
-            className="md:hidden text-white"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </nav>
+        {/* Mobile Button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-white"
+        >
+          {isOpen ? <X size={26} /> : <List size={26} />}
+        </button>
+      </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
-            transition={{ duration: 0.3 }}
-            className="fixed top-0 left-0 w-full h-screen bg-[#070816]/95 backdrop-blur-lg flex flex-col items-center justify-center gap-8 text-white text-xl z-40"
-          >
-            {links.map((link) => (
-              <div
-                key={link}
-                onClick={() => setIsOpen(false)}
-                className="cursor-pointer hover:text-[#32C5EF] transition"
-              >
-                {link}
-              </div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+      <div
+        className={`md:hidden transition-all duration-500 overflow-hidden ${
+          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <ul className="flex flex-col items-center gap-6 py-8 bg-[#070816]/95 backdrop-blur-xl text-sm">
+          {links.map((link) => (
+            <li
+              key={link}
+              onClick={() => setIsOpen(false)}
+              className="text-gray-400 hover:text-white transition duration-300"
+            >
+              {link}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
   );
 }
