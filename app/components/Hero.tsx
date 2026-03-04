@@ -62,9 +62,9 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <div className="relative w-[280px] h-[280px] md:w-[400px] md:h-[400px] flex items-center justify-center mt-16 md:mt-0">
+        <div className="relative w-[280px] h-[280px] md:w-[450px] md:h-[450px] flex items-center justify-center mt-16 md:mt-0">
           <motion.div
-            animate={{ rotate: [0, 6, -6, 0] }}
+            animate={{ rotate: [5, 6, -6, -4] }}
             transition={{
               duration: 25,
               repeat: Infinity,
@@ -74,7 +74,7 @@ export default function Hero() {
           />
 
           <motion.div
-            animate={{ rotate: [0, -8, 8, 0] }}
+            animate={{ rotate: [9, -8, 8, -4] }}
             transition={{
               duration: 20,
               repeat: Infinity,
