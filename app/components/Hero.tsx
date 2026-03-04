@@ -5,7 +5,10 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center bg-[#070816] px-6 md:px-20 py-20 md:py-0 overflow-hidden">
+    <section
+      className="relative min-h-screen flex items-center bg-[#070816] px-6 md:px-20 py-20 md:py-0 overflow-hidden"
+      id="home"
+    >
       <div className="max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-16">
         <div className="max-w-xl">
           <motion.span
@@ -46,12 +49,16 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-8 flex gap-4"
           >
-            <Link
-              href="#projects"
-              className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-cyan-400 text-white font-medium hover:scale-105 transition duration-300"
+            <button
+              onClick={() =>
+                document
+                  .getElementById("project")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-cyan-400 text-white font-medium hover:scale-105 transition duration-300 cursor-pointer"
             >
               View Projects
-            </Link>
+            </button>
 
             <Link
               href="#contact"

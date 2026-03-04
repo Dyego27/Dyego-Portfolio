@@ -7,7 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 const links = [
   { name: "Home", id: "home" },
   { name: "About", id: "about" },
-  { name: "Projects", id: "projects" },
+  { name: "Skills", id: "skills" },
+  { name: "Project", id: "project" },
   { name: "Contact", id: "contact" },
 ];
 
@@ -42,12 +43,10 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          {/* Logo */}
           <span className="text-xl font-semibold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
             Dyego.dev
           </span>
 
-          {/* Desktop */}
           <div className="hidden md:flex gap-10 text-sm">
             {links.map((link) => (
               <button
@@ -62,7 +61,6 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Mobile Button */}
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden text-white"
@@ -72,7 +70,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* MOBILE FULLSCREEN MENU */}
       <AnimatePresence>
         {open && (
           <motion.div
