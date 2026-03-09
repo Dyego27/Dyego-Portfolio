@@ -26,11 +26,11 @@ const skills = [
 ];
 
 const softSkills = [
-  "Proactive",
-  "Teamwork",
-  "Problem Solving",
-  "Communication",
-  "Adaptability",
+  "Proativo",
+  "Trabalho em Equipe",
+  "Solução de problemas",
+  "Communicação",
+  "Adaptabilidade",
 ];
 
 export default function Skills() {
@@ -38,11 +38,11 @@ export default function Skills() {
     <section id="skills" className="w-full bg-[#050816] py-28 px-6">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-white tracking-wide">
-          TECHNICAL SKILLS
+          HABILIDADES TÉCNICAS
         </h2>
 
         <p className="text-gray-400 mt-3 mb-16">
-          Technologies I work with to build amazing web experiences
+          Tecnologias que utilizo para criar experiências web incríveis.
         </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">

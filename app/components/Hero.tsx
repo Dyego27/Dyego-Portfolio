@@ -39,8 +39,9 @@ export default function Hero() {
             transition={{ duration: 0.4, delay: 0.4 }}
             className="mt-6 text-gray-400 text-lg leading-relaxed"
           >
-            Front-end developer passionate about creating beautiful, functional,
-            and user-friendly web experiences with modern technologies.
+            Desenvolvedor front-end apaixonado por criar experiências web
+            bonitas, funcionais e amigáveis ​​ao usuário com tecnologias
+            modernas.
           </motion.p>
 
           <motion.div
@@ -57,14 +58,14 @@ export default function Hero() {
               }
               className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-cyan-400 text-white font-medium hover:scale-105 transition duration-300 cursor-pointer"
             >
-              View Projects
+              Ver Projetos
             </button>
 
             <Link
               href="#contact"
               className="px-6 py-3 rounded-full border border-gray-600 text-white hover:bg-white hover:text-black transition duration-300"
             >
-              Contact Me
+              Fale comigo
             </Link>
           </motion.div>
         </div>

@@ -21,14 +21,14 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
           <p className="text-sm font-medium tracking-[0.2em] uppercase bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-            Featured Work
+            Trabalho em destaque
           </p>
 
-          <h2 className="text-4xl md:text-6xl font-bold mt-4">Projects</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mt-4">Projetos</h2>
 
           <p className="text-gray-400 mt-6 max-w-xl text-lg">
-            A collection of projects showcasing my skills in modern web
-            development, from concept to deployment.
+            Uma coleção de projetos que demonstram minhas habilidades em
+            desenvolvimento web moderno, desde a concepção até a implementação.
           </p>
         </div>
 

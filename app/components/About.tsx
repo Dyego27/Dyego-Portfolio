@@ -19,7 +19,6 @@ export default function About() {
                 About Me
               </span>
 
-              {/* Gradient Bar */}
               <div className="h-[2px] w-16 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full" />
             </div>
 
@@ -40,24 +39,25 @@ export default function About() {
             className="space-y-6 text-gray-300 text-base sm:text-lg"
           >
             <p>
-              I'm Dyego Luis Mendonça de Lima, a Computer Science student with a
-              passion for front-end development. I specialize in creating
-              beautiful, responsive, and user-friendly web applications using
-              the latest technologies.
+              Sou Dyego Luis Mendonça de Lima, estudante de Ciência da
+              Computação e apaixonado por desenvolvimento front-end. Sou
+              especializado na criação de aplicações web bonitas, responsivas e
+              fáceis de usar, utilizando as tecnologias mais recentes.
             </p>
 
             <p>
-              My journey in web development has been driven by curiosity and a
-              desire to build solutions that make a difference. I'm constantly
-              learning and exploring new technologies to stay at the forefront
-              of modern web development.
+              Minha jornada no desenvolvimento web tem sido impulsionada pela
+              curiosidade e pelo desejo de construir soluções que façam a
+              diferença. Estou constantemente aprendendo e explorando novas
+              tecnologias para me manter na vanguarda do desenvolvimento web
+              moderno.
             </p>
 
             <p>
-              With strong skills in React, Next.js, TypeScript, and modern CSS
-              frameworks, I bring ideas to life through clean code and
-              thoughtful design. I'm proactive, enjoy teamwork, and always
-              strive for excellence.
+              Com sólida experiência em React, Next.js, TypeScript e frameworks
+              CSS modernos, dou vida a ideias por meio de código limpo e design
+              criterioso. Sou proativo, gosto de trabalhar em equipe e sempre
+              busco a excelência.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-6 pt-6">
@@ -72,7 +72,7 @@ export default function About() {
               <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md hover:border-purple-400/40 transition-all duration-300">
                 <Globe size={26} className="text-purple-400 mb-4" />
                 <h4 className="text-white font-semibold mb-2">Languages</h4>
-                <p className="text-gray-400 text-sm">English Course - CCAE</p>
+                <p className="text-gray-400 text-sm">English Course - CCAA</p>
               </div>
             </div>
           </motion.div>

@@ -62,14 +62,13 @@ export default function Contact() {
           LET'S CONNECT
         </h2>
 
-        {/* TEXT */}
         <p
           className={`text-gray-400 max-w-xl mx-auto mb-16
           transition-all duration-700 delay-200
           ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
-          I'm always open to discussing new projects, creative ideas, or
-          opportunities to be part of your vision.
+          Estou sempre aberto a discutir novos projetos, ideias criativas ou
+          oportunidades de fazer parte da sua visão.
         </p>
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
@@ -126,20 +125,20 @@ export default function Contact() {
           })}
         </div>
 
-        {/* TEXT */}
         <p
           className={`text-gray-500 mb-8
           transition-all duration-700 delay-[900ms]
           ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
-          Looking for a dedicated front-end developer for your next project?
+          Procura um desenvolvedor front-end dedicado para o seu próximo
+          projeto?
         </p>
 
         <a
-          href="#"
+          href="https://www.instagram.com/dynho999/"
           className={`inline-flex items-center gap-2 px-8 py-4 rounded-full
           bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500
-          transition-all duration-300
+          transition-all duration-100
           hover:scale-105
           hover:shadow-[0_0_30px_rgba(168,85,247,0.8)]
 
@@ -149,7 +148,7 @@ export default function Contact() {
           style={{ transitionDelay: "1100ms" }}
         >
           <PaperPlaneTilt size={20} />
-          Send me a message
+          Envie-me uma mensagem
         </a>
       </div>
     </section>
