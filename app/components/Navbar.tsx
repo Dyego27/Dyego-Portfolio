@@ -52,7 +52,7 @@ export default function Navbar() {
               <button
                 key={link.id}
                 onClick={() => handleClick(link.id)}
-                className="relative text-gray-300 hover:text-white transition group"
+                className="relative text-gray-300 hover:text-white transition group cursor-pointer"
               >
                 {link.name}
 
